@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  deploymentschedule:
+    image: ${DOCKER_REGISTRY}deploymentschedule
+    build:
+      context: .\DeploymentSchedule
+      dockerfile: Dockerfile
