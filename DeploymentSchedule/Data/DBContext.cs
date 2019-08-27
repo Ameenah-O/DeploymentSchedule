@@ -10,7 +10,7 @@ namespace DeploymentSchedule.Data
 {
     public class DbContext : System.Data.Entity.DbContext
     {
-        public DbContext() : base("DeploymentConnectionString")
+        public DbContext() : base("DeploymentScheduleConnectionString")
         {
             //Database.SetInitializer(new CreateDatabaseIfNotExists<DbContext>());
 

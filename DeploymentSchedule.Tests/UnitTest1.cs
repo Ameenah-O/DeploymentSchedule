@@ -7,8 +7,24 @@ namespace DeploymentSchedule.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestCreate()
         {
+
+        }
+        [TestMethod]
+        public void TestUpdate()
+        {
+
+        }
+        [TestMethod]
+        public void TestGet()
+        {
+
+        }
+        [TestMethod]
+        public void TestDelete()
+        {
+
         }
     }
 }

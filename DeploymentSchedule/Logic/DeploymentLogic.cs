@@ -15,66 +15,42 @@ namespace DeploymentSchedule.Logic
         {
             _data = new DeploymentData();
         }
-        public string GetAll()
+        public List<Deployment> GetAll()
         {
             var deployments = _data.GetAll();
-            var deploymentinJson = JsonConvert.SerializeObject(deployments);
-            return deploymentinJson;
+            //var deploymentinJson = JsonConvert.SerializeObject(deployments);
+            return deployments.ToList();
         }
-        public string GetByName(string name)
+        public Deployment GetByName(string name)
         {
             var deployments = _data.GetAll();
             var deployment = deployments.Where(x => x.Name == name).SingleOrDefault();
-            if (deployment!=null)
-            {
-                var deploymentinJson = JsonConvert.SerializeObject(deployment);
-                return deploymentinJson;
-            }
-            else
-            {
-                return null;
-            }
+            return deployment;
         }
-        public string GetByNameAndStatus(string name, string status)
+        public Deployment GetByNameAndStatus(string name, string status)
         {
             var deployments = _data.GetAll();
             var deployment = deployments.Where(x => x.Name == name && x.Status == status).SingleOrDefault();
-            if (deployment != null)
-            {
-                var deploymentinJson = JsonConvert.SerializeObject(deployment);
-                return deploymentinJson;
-            }
-            else
-            {
-                return null;
-            }
+            return deployment;
         }
-        public string GetByStatus(string name, string status)
+        public List<Deployment> GetByStatus(string name, string status)
         {
             var deployments = _data.GetAll();
             deployments = deployments.Where(x => x.Status == status).ToList();
-            if (deployments.Count != 0)
-            {
-                var deploymentinJson = JsonConvert.SerializeObject(deployments);
-                return deploymentinJson;
-            }
-            else
-            {
-                return null;
-            }
+            return deployments?.ToList();
         }
-        public bool Create(string deploymentinJson)
+        public bool Create(Deployment deployment)
         {
-            var deployment = JsonConvert.DeserializeObject<Deployment>(deploymentinJson);
+            //var deployment = JsonConvert.DeserializeObject<Deployment>(deploymentinJson);
             if (IsNameUnique(deployment.Name))
             {
                return _data.Add(deployment);
             }
             return false;
         }
-        public void Delete(string deploymentinJson)
+        public void Delete(string name)
         {
-            var deployment = JsonConvert.DeserializeObject<Deployment>(deploymentinJson);
+            var deployment = GetByName(name);
             _data.Delete(deployment);
         }
         public bool IsNameUnique(string name)
@@ -87,9 +63,8 @@ namespace DeploymentSchedule.Logic
             }
             else return true;
         }
-        public bool Update(string deploymentinJson, string name)
+        public bool Update(Deployment deployment, string name)
         {
-            var deployment = JsonConvert.DeserializeObject<Deployment>(deploymentinJson);
             if (deployment.Name==null)
             {
                 return false;
