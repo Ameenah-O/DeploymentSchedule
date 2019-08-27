@@ -5,7 +5,7 @@
     <DockerTargetOS>Windows</DockerTargetOS>
     <ProjectGuid>f14bc11c-cd32-4e1c-8921-ff0933a5b71d</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>http://{ServiceIPAddress}</DockerServiceUrl>
+    <DockerServiceUrl>http://localhost:32587</DockerServiceUrl>
     <DockerServiceName>deploymentschedule</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
