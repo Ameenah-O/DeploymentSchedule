@@ -1,2 +1,3 @@
 # DeploymentSchedule
-A REST API to keep track of deployment schedule
+# About
+A .Net REST API to keep track of deployment schedule
